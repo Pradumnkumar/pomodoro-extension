@@ -1,3 +1,5 @@
+// set task list
+
 let tasks = [];
 
 chrome.storage.sync.get("tasks", (res) => {
@@ -58,6 +60,8 @@ const deleteTask = (taskNum) => {
     });
 };
 
+// set timer
+
 let timer = 0;
 let isActive = false;
 
@@ -110,3 +114,50 @@ resetBtn.addEventListener("click", ()=>{
         displayTimer(0, res.timeOption);
     })
 })
+
+// animate pomodoro
+
+const pomodoroIcon = document.getElementById("pomodoro-icon")
+
+pomodoroIcon.addEventListener("click", () => {
+    const pomodoroIconDiv = document.getElementById("pomodoro-icon-div");
+    pomodoroIcon.style.transform = "translateX(-150%)";
+    const inputPomodoroTime = document.createElement("input");
+    inputPomodoroTime.id = "pomodoro-time-input";
+    inputPomodoroTime.type = "number";
+    inputPomodoroTime.min = 1;
+    inputPomodoroTime.max = 60;
+    inputPomodoroTime.placeholder = "Pomodoro Time in mins";
+    inputPomodoroTime.addEventListener("change", (event) => {
+        const val = Number(event.target.value);
+        if(val < 1 || val > 60){
+            inputPomodoroTime.value = 25;
+        }
+    })
+
+    const inputPomodoroTimeBtn = document.createElement("input");
+    inputPomodoroTimeBtn.id = "pomodoro-time-button";
+    inputPomodoroTimeBtn.type = "button";
+    inputPomodoroTimeBtn.value = "Set";
+
+    inputPomodoroTimeBtn.addEventListener("click", ()=> {
+        pomodoroIcon.style.transform = "translateX(0%)";
+        const newTime = Number(inputPomodoroTime.value);
+        if(newTime >= 1 && newTime < 61){
+            console.log((newTime > 1));
+            chrome.storage.local.set({
+            timeOption : newTime ? newTime : timeOption,
+            });
+        }
+        else{
+            chrome.storage.local.set({
+                timeOption : 25,
+            });
+        }
+        inputPomodoroTime.remove();
+        inputPomodoroTimeBtn.remove();
+
+    })
+    pomodoroIconDiv.appendChild(inputPomodoroTime);
+    pomodoroIconDiv.appendChild(inputPomodoroTimeBtn);
+});
