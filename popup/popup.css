@@ -1,0 +1,45 @@
+body {
+    height: 400px;
+    width: 300px;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    height: 80px;
+}
+
+.time-display {
+    display: flex;
+    justify-content: center;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.button-container > button{
+    width: 90px;
+}
+
+.task-list { 
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding: 10px
+}
+
+.task-input{
+    outline: none;
+    margin: 5px;
+    padding: 4px;
+    width: 200px;
+}
+
+.task-delete{
+    color: red;
+    margin: 1px;
+    /* padding: 5px; */
+    /* width: 30px; */
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- specifies the character encoding for the HTML document -->
+        <meta charset="UTF-8" />
+        
+        <!-- crucial for making web pages responsive on various devices. It sets the viewport 
+        width to the device width and establishes an initial zoom level of 1.0. 
+        It helps ensure that your web page looks good on both desktop and mobile devices. -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Pomodoro Timer Head</title>
+        <link rel="stylesheet" href="popup.css" />
+    </head>
+    <body>
+        <div class="header">
+            <img src="../icons/icon.png"/>
+        </div>
+        <!-- <h1 class="header">Pomodoro Timer Body Head</h1> -->
+        <h1 class="time-display" id="time">00:00</h1>
+        <div class="button-container">
+            <button id="timer-btn">Start Timer</button>
+            <button id="addTaskBtn">Add Task</button>
+            <button id="reset-btn">Reset</button>
+        </div>
+        <div class="task-list" id="task-list">
+        </div>
+    </body>
+    <script src="popup.js"></script>
+</html>
