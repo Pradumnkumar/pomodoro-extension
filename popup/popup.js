@@ -127,7 +127,7 @@ pomodoroIcon.addEventListener("click", () => {
     inputPomodoroTime.type = "number";
     inputPomodoroTime.min = 1;
     inputPomodoroTime.max = 60;
-    inputPomodoroTime.placeholder = "Pomodoro Time in mins";
+    inputPomodoroTime.placeholder = "Set Time in mins (default 25 min)";
     inputPomodoroTime.addEventListener("change", (event) => {
         const val = Number(event.target.value);
         if(val < 1 || val > 60){
